@@ -32,7 +32,7 @@ In contrast to normal dictionaries, keys are restricted to string type.
 Another extension is the method "intersection", which is kind of "borrowed"
 from sets."""
 __created__ = '2012-06-05'
-__modified__ = '2013-06-01'
+__modified__ = '2013-07-07'
 # based on structure.py from 2011-09-13 until 2012-01-03
 import collections
 
@@ -45,7 +45,7 @@ class Bundle(collections.MutableMapping):
   2. Because of the above, all keys have to be strings.
   3. Added set-like methods, like "intersection"."""
   __created__ = '2012-06-05'
-  __modified__ = '2013-06-01'
+  __modified__ = '2013-07-07'
   # former structure.struct from 2011-09-13 until 2012-01-03 (completely
   # rewritten)
   # former tb.struct from 2011-01-24 until 2011-06-16
@@ -101,10 +101,14 @@ class Bundle(collections.MutableMapping):
       self[name] = value
 
   def __getattr__(self, name):
-    if name == '_%s__data' % self.__class__.__name__:
-      return self.__dict__[name]
-    else:
-      return self.__data[name]
+    try:
+      if name == '_%s__data' % self.__class__.__name__:
+        return self.__dict__[name]
+      else:
+        return self.__data[name]
+    except KeyError:
+      # important when trying to pickle a bundle
+      raise AttributeError
 
   def __delattr__(self, name):
     if name == '_%s__data' % self.__class__.__name__:
