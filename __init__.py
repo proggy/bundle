@@ -1,2 +1,2 @@
 from bundle import *
-__doc__ = bundle.__doc__
+from bundle import __doc__
