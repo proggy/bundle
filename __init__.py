@@ -4,8 +4,8 @@
 # Copyright notice
 # ----------------
 #
-# Copyright (C) 2013 Daniel Jung.
-# Contact: d.jung@jacobs-university.de
+# Copyright (C) 2013-2014 Daniel Jung
+# Contact: djungbremen@gmail.com
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -21,27 +21,39 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 #
-"""Implement a dictionary-like class "Bundle", which enables attribute-like
+"""Implement a dictionary-like class *Bundle*, which enables attribute-like
 access to its elements. So, for example, instead of
->>> bundle = Bundle()
->>> bundle['key1'] = value1
-you can also write
->>> bundle.key1 = value1
 
-In contrast to normal dictionaries, keys are restricted to string type.
-Another extension is the method "intersection", which is kind of "borrowed"
-from sets."""
-__created__ = '2012-06-05'
-__modified__ = '2013-08-01'
-# based on structure.py from 2011-09-13 until 2012-01-03
+>>> bundle['key1'] = 'hello'
+
+you can also do
+
+>>> bundle.key1 = 'hello'
+
+The same is true for reading access:
+
+>>> bundle.key1
+hello
+
+Another extension is the method *intersection()*, which is the equivalent to
+the method of the *set* type with the same name.
+
+
+Limitations
+-----------
+
+In contrast to conventional dictionaries, keys must be strings."""
+# 2012-06-05 - 2014-06-09
+# based on structure.py (2011-09-13 - 2012-01-03)
 import collections
 
 
 class Bundle(collections.MutableMapping):
     """Dictionary-like data structure (actually wraps a dictionary, and
     provides a dictionary-like interface), but with the following changes:
-    1. Elements can also be accessed like attributes, e.g. "a.b = c" instead of
-        "a['b'] = c".
+
+    1. Elements can also be accessed like attributes, e.g. `a.b = c` instead of
+       `a['b'] = c`.
     2. Because of the above, all keys have to be strings.
     3. Added set-like methods, like "intersection"."""
     __created__ = '2012-06-05'
@@ -172,6 +184,15 @@ class Bundle(collections.MutableMapping):
 
 def intersection(*bundles):
     """Return intersection of the given bundles, containing only key-value
-    pairs that are equal in all of the bundles."""
+    pairs that are equal in all of the bundles.
+
+    To be clear: Both key AND value have to agree among all of the input
+    bundles, otherwise a key-value pair does not appear in the output
+    bundle."""
     # 2012-11-13 - 2012-11-13
     return Bundle(bundles[0]).intersection(*bundles[1:])
+
+
+def __main__():
+    import doctest
+    doctest.testmod()

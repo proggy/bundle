@@ -9,16 +9,25 @@
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>bundle</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/djung/lib/bundle/__init__.py">/home/djung/lib/bundle/__init__.py</a></font></td></tr></table>
-    <p><tt>Implement&nbsp;a&nbsp;dictionary-like&nbsp;class&nbsp;"<a href="#Bundle">Bundle</a>",&nbsp;which&nbsp;enables&nbsp;attribute-like<br>
+    <p><tt>Implement&nbsp;a&nbsp;dictionary-like&nbsp;class&nbsp;*<a href="#Bundle">Bundle</a>*,&nbsp;which&nbsp;enables&nbsp;attribute-like<br>
 access&nbsp;to&nbsp;its&nbsp;elements.&nbsp;So,&nbsp;for&nbsp;example,&nbsp;instead&nbsp;of<br>
-&gt;&gt;&gt;&nbsp;bundle&nbsp;=&nbsp;<a href="#Bundle">Bundle</a>()<br>
-&gt;&gt;&gt;&nbsp;bundle['key1']&nbsp;=&nbsp;value1<br>
-you&nbsp;can&nbsp;also&nbsp;write<br>
-&gt;&gt;&gt;&nbsp;bundle.key1&nbsp;=&nbsp;value1<br>
+&gt;&gt;&gt;&nbsp;bundle['key1']&nbsp;=&nbsp;'hello'<br>
 &nbsp;<br>
-In&nbsp;contrast&nbsp;to&nbsp;normal&nbsp;dictionaries,&nbsp;keys&nbsp;are&nbsp;restricted&nbsp;to&nbsp;string&nbsp;type.<br>
-Another&nbsp;extension&nbsp;is&nbsp;the&nbsp;method&nbsp;"intersection",&nbsp;which&nbsp;is&nbsp;kind&nbsp;of&nbsp;"borrowed"<br>
-from&nbsp;sets.</tt></p>
+you&nbsp;can&nbsp;also&nbsp;do<br>
+&gt;&gt;&gt;&nbsp;bundle.key1&nbsp;=&nbsp;'hello'<br>
+&nbsp;<br>
+The&nbsp;same&nbsp;is&nbsp;true&nbsp;for&nbsp;reading&nbsp;access:<br>
+&gt;&gt;&gt;&nbsp;bundle.key1<br>
+hello<br>
+&nbsp;<br>
+Another&nbsp;extension&nbsp;is&nbsp;the&nbsp;method&nbsp;*<a href="#-intersection">intersection</a>()*,&nbsp;which&nbsp;is&nbsp;the&nbsp;equivalent&nbsp;to<br>
+the&nbsp;method&nbsp;of&nbsp;the&nbsp;*set*&nbsp;type&nbsp;with&nbsp;the&nbsp;same&nbsp;name.<br>
+&nbsp;<br>
+&nbsp;<br>
+Limitations<br>
+-----------<br>
+&nbsp;<br>
+In&nbsp;contrast&nbsp;to&nbsp;conventional&nbsp;dictionaries,&nbsp;keys&nbsp;must&nbsp;be&nbsp;strings.</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -188,15 +197,10 @@ even&nbsp;via&nbsp;super()).</tt></dl>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-intersection"><strong>intersection</strong></a>(*bundles)</dt><dd><tt>Return&nbsp;intersection&nbsp;of&nbsp;the&nbsp;given&nbsp;bundles,&nbsp;containing&nbsp;only&nbsp;key-value<br>
-pairs&nbsp;that&nbsp;are&nbsp;equal&nbsp;in&nbsp;all&nbsp;of&nbsp;the&nbsp;bundles.</tt></dd></dl>
-</td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#55aa55">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
-    
-<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>__created__</strong> = '2012-06-05'<br>
-<strong>__modified__</strong> = '2013-08-01'</td></tr></table>
+<td width="100%"><dl><dt><a name="-__main__"><strong>__main__</strong></a>()</dt></dl>
+ <dl><dt><a name="-intersection"><strong>intersection</strong></a>(*bundles)</dt><dd><tt>Return&nbsp;intersection&nbsp;of&nbsp;the&nbsp;given&nbsp;bundles,&nbsp;containing&nbsp;only&nbsp;key-value<br>
+pairs&nbsp;that&nbsp;are&nbsp;equal&nbsp;in&nbsp;all&nbsp;of&nbsp;the&nbsp;bundles.<br>
+&nbsp;<br>
+To&nbsp;be&nbsp;clear:&nbsp;Both&nbsp;key&nbsp;AND&nbsp;value&nbsp;have&nbsp;to&nbsp;agree,&nbsp;otherwise&nbsp;it&nbsp;is&nbsp;omitted.</tt></dd></dl>
+</td></tr></table>
 </body></html>

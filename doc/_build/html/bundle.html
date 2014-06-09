@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>bundle Package &mdash; bundle 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="bundle 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">bundle 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="bundle-package">
+<h1>bundle Package<a class="headerlink" href="#bundle-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference internal" href="index.html#module-bundle" title="bundle"><tt class="xref py py-mod docutils literal"><span class="pre">bundle</span></tt></a> Package<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-bundle.__init__"></span><p>Implement a dictionary-like class <em>Bundle</em>, which enables attribute-like
+access to its elements. So, for example, instead of</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="p">[</span><span class="s">&#39;key1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;hello&#39;</span>
+</pre></div>
+</div>
+<p>you can also do</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">key1</span> <span class="o">=</span> <span class="s">&#39;hello&#39;</span>
+</pre></div>
+</div>
+<p>The same is true for reading access:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bundle</span><span class="o">.</span><span class="n">key1</span>
+<span class="go">hello</span>
+</pre></div>
+</div>
+<p>Another extension is the method <em>intersection()</em>, which is the equivalent to
+the method of the <em>set</em> type with the same name.</p>
+<div class="section" id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<p>In contrast to conventional dictionaries, keys must be strings.</p>
+<dl class="class">
+<dt id="bundle.__init__.Bundle">
+<em class="property">class </em><tt class="descclassname">bundle.__init__.</tt><tt class="descname">Bundle</tt><big>(</big><em>arg=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#bundle.__init__.Bundle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">_abcoll.MutableMapping</span></tt></p>
+<p>Dictionary-like data structure (actually wraps a dictionary, and
+provides a dictionary-like interface), but with the following changes:</p>
+<ol class="arabic simple">
+<li>Elements can also be accessed like attributes, e.g. <cite>a.b = c</cite> instead of
+<cite>a[&#8216;b&#8217;] = c</cite>.</li>
+<li>Because of the above, all keys have to be strings.</li>
+<li>Added set-like methods, like &#8220;intersection&#8221;.</li>
+</ol>
+<dl class="method">
+<dt id="bundle.__init__.Bundle.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#bundle.__init__.Bundle.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bundle.__init__.Bundle.intersection">
+<tt class="descname">intersection</tt><big>(</big><em>*others</em><big>)</big><a class="headerlink" href="#bundle.__init__.Bundle.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return intersection of the given bundles, containing only key-value
+pairs that are equal in all the bundles.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bundle.__init__.intersection">
+<tt class="descclassname">bundle.__init__.</tt><tt class="descname">intersection</tt><big>(</big><em>*bundles</em><big>)</big><a class="headerlink" href="#bundle.__init__.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return intersection of the given bundles, containing only key-value
+pairs that are equal in all of the bundles.</p>
+<p>To be clear: Both key AND value have to agree among all of the input
+bundles, otherwise a key-value pair does not appear in the output
+bundle.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">bundle Package</a><ul>
+<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">bundle</span></tt> Package</a><ul>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/bundle.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">bundle 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Daniel Jung.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
