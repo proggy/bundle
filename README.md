@@ -1,15 +1,15 @@
-bundle
-======
+repickle
+========
 
-Implement a dictionary-like class "Bundle", which enables attribute-like
-access to its elements.
+Implement a dictionary-like class "Bundle", which enables attribute-like access
+to its elements.
 
 
 
 Copyright notice
 ----------------
 
-Copyright (C) 2013-2014 Daniel Jung.
+Copyright (C) 2015 Daniel Jung.
 Contact: djungbremen@gmail.com
 
 This program is free software; you can redistribute it and/or modify it
