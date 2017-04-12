@@ -4,7 +4,7 @@
 # Copyright notice
 # ----------------
 #
-# Copyright (C) 2013-2014 Daniel Jung
+# Copyright (C) 2013-2017 Daniel Jung
 # Contact: djungbremen@gmail.com
 #
 # This program is free software; you can redistribute it and/or modify it
@@ -43,7 +43,8 @@ Limitations
 -----------
 
 In contrast to conventional dictionaries, keys must be strings."""
-# 2012-06-05 - 2014-06-09
+# 2012-06-05
+# 2017-04-12
 # based on structure.py (2011-09-13 - 2012-01-03)
 import collections
 
@@ -175,6 +176,12 @@ class Bundle(collections.MutableMapping):
 
     def copy(self):
         return self.__class__(self)
+    
+    def __dir__(self):
+        return self.__data.keys()
+    
+    def _ipython_key_completions_(self):
+        return self.__data.keys()
 
 
 #================================================================#
