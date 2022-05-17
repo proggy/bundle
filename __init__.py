@@ -4,8 +4,8 @@
 # Copyright notice
 # ----------------
 #
-# Copyright (C) 2013-2017 Daniel Jung
-# Contact: djungbremen@gmail.com
+# Copyright (C) 2013-2022 Daniel Jung
+# Contact: proggy@mailbox.org
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -45,8 +45,12 @@ Limitations
 In contrast to conventional dictionaries, keys must be strings."""
 # 2012-06-05
 # 2017-04-12
+# 2022-05-17
 # based on structure.py (2011-09-13 - 2012-01-03)
 import collections
+from future.utils import string_types
+import six
+import sys
 
 
 class Bundle(collections.MutableMapping):
@@ -80,7 +84,7 @@ class Bundle(collections.MutableMapping):
 
         # check for non-string keys
         for key in self.__data:
-            if not isinstance(key, basestring):
+            if not isinstance(key, string_types):
                 raise TypeError('the key "%s" is not a string' % key)
 
         # add keyword arguments
@@ -89,7 +93,7 @@ class Bundle(collections.MutableMapping):
     def __iter__(self):
         # 2012-12-15
         keys = self.__data.keys()
-        keys.sort()
+        keys = sorted(keys)
         return iter(keys)
 
     def __getitem__(self, key):
@@ -99,7 +103,7 @@ class Bundle(collections.MutableMapping):
         return len(self.__data)
 
     def __setitem__(self, key, value):
-        if not isinstance(key, basestring):
+        if not isinstance(key, string_types):
             raise TypeError('the key "%s" is not a string' % key)
         self.__data[key] = value
 
@@ -118,9 +122,10 @@ class Bundle(collections.MutableMapping):
                 return self.__dict__[name]
             else:
                 return self.__data[name]
-        except KeyError, e:
+        except KeyError as e:
             # important when trying to pickle a bundle
-            raise AttributeError(e)
+            t, v, tb = sys.exc_info()
+            six.reraise(AttributeError, v, tb)
 
     def __delattr__(self, name):
         if name == '_%s__data' % self.__class__.__name__:
@@ -128,19 +133,18 @@ class Bundle(collections.MutableMapping):
         del self[name]
 
     def __repr__(self):
-        # 2012-12-15 - 2012-12-15
-        #keys = self.__data.keys()
-        #keys.sort()
+        keys = self.__data.keys()
+        keys = sorted(keys)
         return '%s(%s)' % (self.__class__.__name__,
                            ', '.join(('%s=%s' % (key, repr(value))
-                                     for key, value in self.iteritems())))
+                                     for key, value in self.items())))
 
     def __and__(self, other):
         """Implement ampersand operator (&). Return new struct that only
         contains elements that are common to both of the input structures (with
         values all being equal)."""
         # 2011-02-07
-        return self.interaction(other)
+        return self.intersection(other)
 
     def intersection(self, *others):
         """Return intersection of the given bundles, containing only key-value

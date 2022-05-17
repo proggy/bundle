@@ -9,7 +9,7 @@ access to its elements.
 Copyright notice
 ----------------
 
-Copyright (C) 2013-2014 Daniel Jung.
+Copyright (C) 2013-2022 Daniel Jung.
 Contact: djungbremen@gmail.com
 
 This program is free software; you can redistribute it and/or modify it
