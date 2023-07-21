@@ -4,8 +4,8 @@
 # Copyright notice
 # ----------------
 #
-# Copyright (C) 2013-2022 Daniel Jung
-# Contact: proggy@mailbox.org
+# Copyright (C) 2013-2023 Daniel Jung
+# Contact: proggy-contact@mailbox.org
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -42,27 +42,24 @@ the method of the *set* type with the same name.
 Limitations
 -----------
 
-In contrast to conventional dictionaries, keys must be strings."""
-# 2012-06-05
-# 2017-04-12
-# 2022-05-17
-# based on structure.py (2011-09-13 - 2012-01-03)
+In contrast to conventional dictionaries, keys must be strings.
+"""
+__version__ = '0.1.1'
+
 import collections
 from future.utils import string_types
 import six
 import sys
 
-
-class Bundle(collections.MutableMapping):
+class Bundle(collections.abc.MutableMapping):
     """Dictionary-like data structure (actually wraps a dictionary, and
     provides a dictionary-like interface), but with the following changes:
 
     1. Elements can also be accessed like attributes, e.g. `a.b = c` instead of
        `a['b'] = c`.
     2. Because of the above, all keys have to be strings.
-    3. Added set-like methods, like "intersection"."""
-    __created__ = '2012-06-05'
-    __modified__ = '2013-08-01'
+    3. Added set-like methods, like "intersection".
+    """
     # former structure.struct from 2011-09-13 until 2012-01-03 (completely
     # rewritten)
     # former tb.struct from 2011-01-24 until 2011-06-16
@@ -77,8 +74,9 @@ class Bundle(collections.MutableMapping):
                             b[key] = value
         Bundle(**kwargs) -> new bundle initialized with the name=value pairs in
                             the keyword argument list. For example:
-                            Bundle(one=1, two=2)"""
-        # 2012-06-11 - 2012-06-11
+                            Bundle(one=1, two=2)
+        """
+        
         # initialize data structure
         self.__data = {} if arg is None else dict(arg)
 
@@ -143,13 +141,11 @@ class Bundle(collections.MutableMapping):
         """Implement ampersand operator (&). Return new struct that only
         contains elements that are common to both of the input structures (with
         values all being equal)."""
-        # 2011-02-07
         return self.intersection(other)
 
     def intersection(self, *others):
         """Return intersection of the given bundles, containing only key-value
         pairs that are equal in all the bundles."""
-        # 2012-06-05 - 2013-10-31
         # former structure.struct.intersection from 2011-02-07
 
         # check types
@@ -199,8 +195,8 @@ def intersection(*bundles):
 
     To be clear: Both key AND value have to agree among all of the input
     bundles, otherwise a key-value pair does not appear in the output
-    bundle."""
-    # 2012-11-13 - 2012-11-13
+    bundle.
+    """
     return Bundle(bundles[0]).intersection(*bundles[1:])
 
 
