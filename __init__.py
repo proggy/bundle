@@ -189,6 +189,15 @@ class Bundle(collections.abc.MutableMapping):
 #================================================================#
 
 
+#    """Return intersection of given parameter sets. Expect list of instances
+#    of :class:`bundle.Bundle`. Return instance of :class:`bundle.Bundle`."""
+
+#@Frog(inmap=dict(params='$@/param'), outmap={0: '%0/param'}, overwrite=True,
+#      usage='%prog [options] [INPUT_FILE1 [INPUT_FILE2 [...]]] OUTPUT_FILE',
+#      prolog='This frog "propagates" the parameter sets of the input ' +
+#             'files to the given output file, removing those parameters ' +
+#             'whose value is not the same throughout the input files.')
+
 def intersection(*bundles):
     """Return intersection of the given bundles, containing only key-value
     pairs that are equal in all of the bundles.
